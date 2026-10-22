@@ -178,6 +178,12 @@ footer{border-top:1px solid #121317;padding:40px 0 56px;color:var(--dim);font-si
 .pair b{display:block;font:600 20px/1.2 var(--hf)}
 .pair i{font-style:normal;color:var(--dim);font-size:13px;display:block;margin:6px 0 10px}
 .pair p{margin:0;color:var(--muted);font-size:15px}
+.reel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+@media (max-width:900px){.reel{grid-template-columns:repeat(2,1fr)}}
+.reel figure{margin:0;background:var(--card);border:1px solid var(--edge);border-radius:14px;overflow:hidden}
+.reel video,.reel img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#111}
+.reel.stills img{aspect-ratio:4/5}
+.reel figcaption{padding:10px 12px;font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -232,6 +238,16 @@ footer{border-top:1px solid #121317;padding:40px 0 56px;color:var(--dim);font-si
       <li><span class="tag soon">Planned</span><h3>Fans can collect it</h3><p>Once you've minted it, fans can collect and trade your film's tokens. Films you haven't minted can't be traded.</p></li>
     </ol>
     <p class="note"><b>We never mint on your behalf.</b> Nothing goes on chain in your name unless you mint it from your own wallet.</p>
+  </div>
+</section>
+
+<section id="reel">
+  <div class="wrap">
+    <p class="kicker">On bMoviesX</p>
+    <h2>Short films, clips and stills.</h2>
+    <p class="sub">Examples from VexVoid, made by us. Yours go here when you upload and mint them.</p>
+    <div class="reel"><figure><video src="/media/clip-1.mp4" poster="/media/clip-1.jpg" muted loop playsinline autoplay preload="none"></video><figcaption>Clip 1 · VexVoid</figcaption></figure><figure><video src="/media/clip-2.mp4" poster="/media/clip-2.jpg" muted loop playsinline autoplay preload="none"></video><figcaption>Clip 2 · VexVoid</figcaption></figure><figure><video src="/media/clip-3.mp4" poster="/media/clip-3.jpg" muted loop playsinline autoplay preload="none"></video><figcaption>Clip 3 · VexVoid</figcaption></figure><figure><video src="/media/clip-4.mp4" poster="/media/clip-4.jpg" muted loop playsinline autoplay preload="none"></video><figcaption>Clip 4 · VexVoid</figcaption></figure></div>
+    <div class="reel stills"><figure><img src="/media/still-1.jpg" alt="VexVoid concept art 1" loading="lazy"><figcaption>Still 1 · VexVoid</figcaption></figure><figure><img src="/media/still-2.jpg" alt="VexVoid concept art 2" loading="lazy"><figcaption>Still 2 · VexVoid</figcaption></figure><figure><img src="/media/still-3.jpg" alt="VexVoid concept art 3" loading="lazy"><figcaption>Still 3 · VexVoid</figcaption></figure><figure><img src="/media/still-4.jpg" alt="VexVoid concept art 4" loading="lazy"><figcaption>Still 4 · VexVoid</figcaption></figure></div>
   </div>
 </section>
 
