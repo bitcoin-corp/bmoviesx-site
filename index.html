@@ -128,8 +128,66 @@ ul,ol{padding:0;list-style:none}
 
 /* entrance */
 @keyframes rise{from{opacity:0;transform:translateY(22px)}}
-.hero .eyebrow,.hero h1 .l,.hero h1 .h,.lede,.ctas,.hint{animation:rise .9s var(--ease) both}
-.hero h1 .l{animation-delay:.12s}.hero h1 .h{animation-delay:.24s}.lede{animation-delay:.4s}.ctas{animation-delay:.52s}.hint{animation-delay:.62s}
+.hero .eyebrow,.lede,.ctas,.hint{animation:rise .9s var(--ease) both}
+
+
+/* hero type motion (JS adds html.js + .go; everything is visible without them) */
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.04em .02em 0;margin:-.04em -.02em 0}
+.hero h1 .wi{display:inline-block}
+.hero h1 em.rd{font-style:normal;display:inline-block;transform-origin:0 60%}
+html.js .hero h1 .wi{transform:translateY(112%)}
+html.js .hero.go h1 .wi{animation:wup .75s var(--ease) calc(.1s + var(--i)*.09s) both}
+@keyframes wup{from{transform:translateY(112%)}to{transform:none}}
+.hero .eyebrow .ty{display:inline-block}
+html.js .hero.go .eyebrow .ty{animation:type 1s steps(30,end) both}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+html.js .hero.go .lede,html.js .hero.go .hint{animation:rise .8s var(--ease) 1s both}
+html.js .hero.go .ctas{animation:rise .8s var(--ease) 1.15s both}
+.hero h1 em.rd.gl{animation:glitch .24s steps(2,end)}
+@keyframes glitch{0%{transform:translateX(-6px);text-shadow:4px 0 #00e5ff,-4px 0 #ff0050}25%{transform:translateX(7px) skewX(-6deg);text-shadow:-5px 0 #00e5ff,5px 0 #ff0050}50%{transform:translateX(-3px);text-shadow:3px 0 #00e5ff,-3px 0 #ff0050;opacity:.82}75%{transform:translateX(4px) skewX(4deg);text-shadow:-3px 0 #00e5ff,3px 0 #ff0050}100%{transform:none;text-shadow:none}}
+.hero h1 em.rd.pl{animation:pulse .5s var(--ease)}
+@keyframes pulse{0%{transform:scale(1.035)}100%{transform:scale(1)}}
+html.js .rv{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js .hero h1 .wi,html.js .rv{transform:none;opacity:1;animation:none;transition:none}
+  html.js .hero.go .eyebrow .ty,html.js .hero.go .lede,html.js .hero.go .hint,html.js .hero.go .ctas{animation:none}
+  .hero h1 em.rd.gl,.hero h1 em.rd.pl{animation:none}
+}
+
+
+/* showmanship */
+.hero::after{opacity:.1;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.35) 0 1px,transparent 1px 3px),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:normal;opacity:.16}
+.spot{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,54,66,.2),transparent 62%)}
+.hero.sp .spot{opacity:1}
+.marq{overflow:hidden;border-block:1px solid var(--line);background:#050505;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mtrack{display:flex;width:max-content;animation:marq 46s linear infinite}
+.marq:hover .mtrack{animation-play-state:paused}
+.mset{display:flex;align-items:center;flex:none}
+.mset span{font:400 clamp(26px,3vw,40px)/1 var(--bebas);letter-spacing:.06em;text-transform:uppercase;color:#cfcfcf;white-space:nowrap}
+.mset i{width:9px;height:9px;margin:0 clamp(22px,3vw,40px);background:var(--red);transform:rotate(45deg);flex:none;box-shadow:0 0 14px var(--red)}
+@keyframes marq{to{transform:translateX(-50%)}}
+.card .p{transform-style:preserve-3d;transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.card:hover .p,.card:focus-visible .p{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px) scale(1.03)}
+.card .p::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.16) 50%,transparent 65%);background-size:250% 100%;background-position:var(--gx,100%) 0}
+.card:hover .p::after{opacity:1}
+.card .pv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.card .pv.on{opacity:1}
+.stamp{position:absolute;z-index:3;right:-2%;top:-9%;transform:rotate(7deg);padding:10px 18px 8px;border:3px solid var(--red);border-radius:4px;color:var(--red);background:rgba(0,0,0,.55);text-align:center;box-shadow:0 0 30px rgba(229,9,20,.35)}
+.stamp b{display:block;font:400 clamp(30px,3.4vw,48px)/1 var(--bebas);letter-spacing:.1em;text-transform:uppercase}
+.stamp span{display:block;font:900 9px/1 var(--disp);letter-spacing:.3em;text-transform:uppercase;margin-top:4px;color:#ff8a92}
+html.js .stamp.rv{transform:rotate(7deg) scale(1.7);opacity:0}
+html.js .stamp.rv.in{transform:rotate(7deg) scale(1);opacity:1;transition:opacity .25s,transform .45s cubic-bezier(.3,1.6,.5,1) .2s}
+html.js .st-i:nth-child(2){transition-delay:.1s}html.js .st-i:nth-child(3){transition-delay:.2s}html.js .st-i:nth-child(4){transition-delay:.3s}
+@keyframes sweep{0%{background-position:130% 0;color:transparent}100%{background-position:-30% 0;color:transparent}}
+.head h2.sw,.cta h2.sw,.feat .t h2.sw{background:linear-gradient(100deg,#fff 40%,#ff5560 50%,#fff 60%) 130% 0/250% 100% no-repeat;-webkit-background-clip:text;background-clip:text;animation:sweep 1.4s ease-out .3s 1 both;animation-fill-mode:none}
+@media (max-width:900px){.stamp{right:2%;top:-12%}}
+@media (prefers-reduced-motion:reduce){
+  .mtrack{animation:none;flex-wrap:nowrap}.spot{display:none}
+  .head h2.sw,.cta h2.sw,.feat .t h2.sw{animation:none;background:none}
+  html.js .stamp.rv,html.js .stamp.rv.in{transform:rotate(7deg);opacity:1;transition:none}
+  .card .p{transform:none!important}
+}
 
 /* sections */
 section{position:relative}
@@ -259,6 +317,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 <main>
 <section class="hero" id="top">
   <video id="hv" src="/media/hero-loop.mp4" poster="/media/hero-loop.jpg" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+  <div class="spot" aria-hidden="true"></div>
   <header class="nav">
     <a class="brand" href="/" aria-label="bMoviesX home"><svg aria-hidden="true"><use href="#rbs"/></svg><span>bMovies<span class="red">X</span></span></a>
     <nav class="nav-links" aria-label="Main">
@@ -269,8 +328,8 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
     </nav>
   </header>
   <div class="hero-in">
-    <p class="eyebrow mono">bMoviesX &middot; built on bWalletX</p>
-    <h1><span class="l">Upload your movies.</span><span class="h">Mint them <em>on Bitcoin.</em></span></h1>
+    <p class="eyebrow mono"><span class="ty">bMoviesX &middot; built on bWalletX</span></p>
+    <h1 aria-label="Upload your movies. Mint them on Bitcoin."><span class="l" aria-hidden="true"><span class="w"><span class="wi" style="--i:0">Upload</span></span> <span class="w"><span class="wi" style="--i:1">your</span></span> <span class="w"><span class="wi" style="--i:2">movies.</span></span></span><span class="h" aria-hidden="true"><span class="w"><span class="wi" style="--i:3">Mint</span></span> <span class="w"><span class="wi" style="--i:4">them</span></span> <em class="rd"><span class="w"><span class="wi" style="--i:5">on</span></span> <span class="w"><span class="wi" style="--i:6">Bitcoin.</span></span></em></span></h1>
     <p class="lede">Put your films, clips and trailers on chain from your own bWalletX. You keep the credit and the token, and your film shows up in the feed.</p>
     <div class="ctas">
       <a class="btn btn-gold" href="https://bwalletx.com/get">Get bWalletX</a>
@@ -285,9 +344,11 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
   </div>
 </section>
 
+<div class="marq" aria-label="Films on bMovies"><div class="mtrack"><div class="mset"><span>Crack Force One</span><i aria-hidden="true"></i><span>Ashes of the Border</span><i aria-hidden="true"></i><span>The Teapot from Paraguay</span><i aria-hidden="true"></i><span>The Cicada Room</span><i aria-hidden="true"></i><span>Spoon from Space</span><i aria-hidden="true"></i><span>Scammer’s Cartel</span><i aria-hidden="true"></i><span>$KWEG</span><i aria-hidden="true"></i><span>Copies</span><i aria-hidden="true"></i><span>The Last Librarian</span><i aria-hidden="true"></i><span>Salvage Crew</span><i aria-hidden="true"></i><span>Sky Signal</span><i aria-hidden="true"></i><span>The Last Lighthouse</span><i aria-hidden="true"></i><span>The Fold</span><i aria-hidden="true"></i></div><div class="mset" aria-hidden="true"><span>Crack Force One</span><i aria-hidden="true"></i><span>Ashes of the Border</span><i aria-hidden="true"></i><span>The Teapot from Paraguay</span><i aria-hidden="true"></i><span>The Cicada Room</span><i aria-hidden="true"></i><span>Spoon from Space</span><i aria-hidden="true"></i><span>Scammer’s Cartel</span><i aria-hidden="true"></i><span>$KWEG</span><i aria-hidden="true"></i><span>Copies</span><i aria-hidden="true"></i><span>The Last Librarian</span><i aria-hidden="true"></i><span>Salvage Crew</span><i aria-hidden="true"></i><span>Sky Signal</span><i aria-hidden="true"></i><span>The Last Lighthouse</span><i aria-hidden="true"></i><span>The Fold</span><i aria-hidden="true"></i></div></div></div>
+
 <section class="sec" id="films" aria-labelledby="films-h">
   <div class="head">
-    <div><span class="kick mono">The catalogue</span><h2 id="films-h">Already on <span>bMovies.</span></h2><p class="sub">Films, trailers and mashups from bMovies and its house studios. Yours go here when you upload and mint them.</p></div>
+    <div><span class="kick mono rv">The catalogue</span><h2 id="films-h" class="rv">Already on <span>bMovies.</span></h2><p class="sub rv">Films, trailers and mashups from bMovies and its house studios. Yours go here when you upload and mint them.</p></div>
   </div>
 
   <div class="rail-wrap" data-rail>
@@ -295,7 +356,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
       <div class="arrows"><button type="button" data-dir="-1" aria-label="Scroll originals left"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" data-dir="1" aria-label="Scroll originals right"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 2 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
     <ul class="rail" tabindex="0" role="list" aria-label="House original films, scrolls sideways">
-      <li><a class="card" href="https://bmovies.app"><div class="p"><img src="/media/posters/crack.jpg" width="360" height="540" alt="Crack Force One poster" decoding="async"><i class="flag">Featured</i></div><b>Crack Force One</b><span>bMovies original</span></a></li>
+      <li><a class="card" href="https://bmovies.app"><div class="p"><img src="/media/posters/crack.jpg" width="360" height="540" alt="Crack Force One poster" decoding="async"><video class="pv" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video><i class="flag">Featured</i></div><b>Crack Force One</b><span>bMovies original</span></a></li>
       <li><a class="card" href="https://bmovies.app"><div class="p"><img src="/media/posters/ashes.jpg" width="360" height="540" alt="Ashes of the Border poster" loading="lazy" decoding="async"></div><b>Ashes of the Border</b><span>bMovies original</span></a></li>
       <li><a class="card" href="https://bmovies.app"><div class="p"><img src="/media/posters/teapot.jpg" width="360" height="540" alt="The Teapot from Paraguay poster" loading="lazy" decoding="async"></div><b>The Teapot from Paraguay</b><span>bMovies original</span></a></li>
       <li><a class="card" href="https://bmovies.app"><div class="p"><img src="/media/posters/cicada.jpg" width="360" height="540" alt="The Cicada Room poster" loading="lazy" decoding="async"></div><b>The Cicada Room</b><span>bMovies original</span></a></li>
@@ -329,13 +390,14 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 <section class="sec feature" aria-labelledby="cf-h">
   <div class="feat">
     <div class="t">
-      <span class="kick mono">Featured film</span>
-      <h2 id="cf-h">Crack Force&nbsp;One</h2>
-      <p class="q">One raccoon. One crew. One night to crack the gloom.</p>
+      <span class="kick mono rv">Featured film</span>
+      <h2 id="cf-h" class="rv">Crack Force&nbsp;One</h2>
+      <p class="q rv">One raccoon. One crew. One night to crack the gloom.</p>
       <p class="d">A hard-hat crew, a city at sunset and a very bad night on the scaffold. Made on bMovies, the way every film on bMoviesX can be made.</p>
       <a class="btn btn-glass" href="https://bmovies.app">Watch on bMovies.app</a>
     </div>
     <div class="screen">
+      <div class="stamp rv" aria-hidden="true"><b>Now showing</b><span>bMovies original</span></div>
       <div class="v"><video id="fv" src="/media/crack-force-one.mp4" poster="/media/crack-force-one.jpg" muted loop playsinline preload="none" aria-label="Clip from Crack Force One"></video></div>
       <div class="pst"><img src="/media/posters/crack.jpg" width="360" height="540" alt="" loading="lazy" decoding="async"></div>
     </div>
@@ -343,12 +405,12 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 </section>
 
 <section class="sec how" id="how" aria-labelledby="how-h">
-  <div class="head"><div><span class="kick mono">How it works</span><h2 id="how-h">Your film, <span>your token.</span></h2><p class="sub">Four steps, and you are in control of every one.</p></div></div>
+  <div class="head"><div><span class="kick mono rv">How it works</span><h2 id="how-h" class="rv">Your film, <span>your token.</span></h2><p class="sub rv">Four steps, and you are in control of every one.</p></div></div>
   <ol class="steps">
-    <li><span class="n" aria-hidden="true">1</span><h3>Upload your film</h3><p>Add a film, a scene, a trailer or a short clip. Already featured from X? Claim it by signing in with your X account.</p><span class="s">Next</span></li>
-    <li><span class="n" aria-hidden="true">2</span><h3>Mint from your bWalletX</h3><p>You mint it yourself, from your own wallet. You pay the small network fee and nobody else touches the key.</p><span class="s">Next</span></li>
-    <li><span class="n" aria-hidden="true">3</span><h3>You keep the token and the credit</h3><p>The token sits in your wallet with your name on it. Fans can collect and trade films you have minted.</p><span class="s">Next</span></li>
-    <li><span class="n" aria-hidden="true">4</span><h3>It shows in the feed</h3><p>Your film appears in the bWalletX feed and across the bApps, including bMovies.app.</p><span class="s">Next</span></li>
+    <li class="rv st-i"><span class="n" aria-hidden="true">1</span><h3>Upload your film</h3><p>Add a film, a scene, a trailer or a short clip. Already featured from X? Claim it by signing in with your X account.</p><span class="s">Next</span></li>
+    <li class="rv st-i"><span class="n" aria-hidden="true">2</span><h3>Mint from your bWalletX</h3><p>You mint it yourself, from your own wallet. You pay the small network fee and nobody else touches the key.</p><span class="s">Next</span></li>
+    <li class="rv st-i"><span class="n" aria-hidden="true">3</span><h3>You keep the token and the credit</h3><p>The token sits in your wallet with your name on it. Fans can collect and trade films you have minted.</p><span class="s">Next</span></li>
+    <li class="rv st-i"><span class="n" aria-hidden="true">4</span><h3>It shows in the feed</h3><p>Your film appears in the bWalletX feed and across the bApps, including bMovies.app.</p><span class="s">Next</span></li>
   </ol>
   <p class="note"><span><b>We never mint on your behalf.</b> Nothing goes on chain in your name unless you mint it from your own wallet. Films you have not minted cannot be traded.</span></p>
 </section>
@@ -365,7 +427,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 
 <section class="sec cta" id="get" aria-labelledby="get-h">
   <div class="cta-in">
-    <h2 id="get-h"><span>Start with</span>the wallet.</h2>
+    <h2 id="get-h" class="rv"><span>Start with</span>the wallet.</h2>
     <p>Your films, tokens and identity live in bWalletX. Free on the web, phone, desktop and Chrome.</p>
     <div class="ctas"><a class="btn btn-gold" href="https://bwalletx.com/get">Get bWalletX</a><a class="btn btn-glass" href="https://bmovies.app">Watch on bMovies.app</a></div>
   </div>
@@ -389,6 +451,49 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
   if(rm){hv.removeAttribute('autoplay');hv.pause();setPP(true)}
   var hero0=document.getElementById('top'),END=20.4;
   if(!rm)hv.addEventListener('timeupdate',function(){hero0.classList.toggle('end',hv.currentTime>=END)});
+
+  // ---- type motion ----
+  if(!rm){
+    document.documentElement.classList.add('js');
+    var rd=document.querySelector('.hero h1 em.rd'),go=function(){hero0.classList.remove('go');void hero0.offsetWidth;hero0.classList.add('go')};
+    go();
+    var BEAT=.5,lastBeat=-1,cues=[6,12,16,18,19.5,20.5],fired={},raf=0,wasEnd=false;
+    function fx(c){rd.classList.remove(c);void rd.offsetWidth;rd.classList.add(c);setTimeout(function(){rd.classList.remove(c)},c==='gl'?260:520)}
+    function tick(){
+      var t=hv.currentTime;
+      if(t<lastBeat*BEAT-.3){lastBeat=-1;fired={}}
+      var b=Math.floor(t/BEAT);
+      if(b!==lastBeat){lastBeat=b;if(t<20.3&&b%2===0&&!rd.classList.contains('gl'))fx('pl')}
+      for(var i=0;i<cues.length;i++){var c=cues[i];if(!fired[c]&&t>=c&&t<c+.4){fired[c]=1;if(t<20.3)fx('gl')}}
+      var end=t>=20.4;
+      if(wasEnd&&!end&&t<3){go()}
+      wasEnd=end;
+      raf=requestAnimationFrame(tick)}
+    function loopOn(){if(!raf&&!hv.paused)raf=requestAnimationFrame(tick)}
+    function loopOff(){cancelAnimationFrame(raf);raf=0}
+    hv.addEventListener('play',loopOn);hv.addEventListener('pause',loopOff);loopOn();
+    // scroll reveals
+
+    // headings: red light sweep once on reveal
+    document.querySelectorAll('.head h2,.cta h2,.feat .t h2').forEach(function(h){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){h.classList.add('sw');o.disconnect()}},{threshold:.6}).observe(h)});
+    // count-up for step numbers
+    document.querySelectorAll('.steps .n').forEach(function(n){var to=+n.textContent;new IntersectionObserver(function(e,o){if(!e[0].isIntersecting)return;o.disconnect();var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/700);n.textContent=Math.max(1,Math.round(to*k));if(k<1)requestAnimationFrame(f)})(t0)},{threshold:.6}).observe(n)});
+    var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if(fine){
+      // hero cursor spotlight
+      var sp=0,mx=0,my=0;hero0.addEventListener('pointermove',function(e){var r=hero0.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;hero0.classList.add('sp');if(!sp)sp=requestAnimationFrame(function(){sp=0;hero0.style.setProperty('--mx',mx+'px');hero0.style.setProperty('--my',my+'px')})});
+      hero0.addEventListener('pointerleave',function(){hero0.classList.remove('sp')});
+      // poster tilt + glare
+      document.querySelectorAll('.card .p').forEach(function(p){p.addEventListener('pointermove',function(e){var r=p.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;p.style.setProperty('--ry',((x-.5)*14).toFixed(1)+'deg');p.style.setProperty('--rx',((.5-y)*14).toFixed(1)+'deg');p.style.setProperty('--gx',(130-x*160)+'%')});p.addEventListener('pointerleave',function(){p.style.setProperty('--rx','0deg');p.style.setProperty('--ry','0deg')})});
+      // Crack Force One trailer preview on hover (lazy)
+      var pv=document.querySelector('.card .pv');
+      if(pv){var host=pv.closest('.card');host.addEventListener('pointerenter',function(){if(!pv.src)pv.src='/media/crack-force-one.mp4';pv.currentTime=0;pv.play().then(function(){pv.classList.add('on')}).catch(function(){})});host.addEventListener('pointerleave',function(){pv.classList.remove('on');pv.pause()})}
+    }
+
+    var rv=document.querySelectorAll('.rv');
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.01});rv.forEach(function(el){io.observe(el)})}
+    else rv.forEach(function(el){el.classList.add('in')});
+  }
   var snd=document.getElementById('snd'),sndTx=snd.querySelector('.tx');
   function setSnd(on){snd.setAttribute('aria-pressed',on?'true':'false');snd.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');sndTx.textContent=on?'Sound off':'Sound on'}
   function remember(v){try{localStorage.setItem('bmoviesx-sound',v?'1':'0')}catch(e){}}
