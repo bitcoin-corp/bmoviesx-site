@@ -92,6 +92,13 @@ ul,ol{padding:0;list-style:none}
 .hero::before{transition:opacity .6s}
 .hero.end .hero-in{opacity:0;transform:translateY(14px);pointer-events:none}
 .hero.end::before{opacity:.15}
+/* crisp end card (replaces the soft 960x540 card baked into the loop) */
+.ec{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,20px);padding:0 var(--pad);text-align:center;pointer-events:none;opacity:0;transform:scale(.97);transition:opacity .45s var(--ease),transform .9s var(--ease);background:radial-gradient(ellipse at 50% 48%,rgba(120,0,14,.35),rgba(0,0,0,0) 62%)}
+.hero.end .ec{opacity:1;transform:none}
+.ec svg{width:clamp(64px,8vw,120px);height:auto;aspect-ratio:74/100;filter:drop-shadow(0 0 28px rgba(255,31,45,.55))}
+.ec .wm{font:400 clamp(64px,10vw,168px)/.9 var(--bebas);letter-spacing:.04em;text-transform:uppercase;color:#f6f1ec}
+.ec .tg{font:700 clamp(10px,1vw,14px)/1.5 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:#d8d2cc}
+@media (prefers-reduced-motion:reduce){.ec{transition:none;transform:none}}
 .hero-in{padding:120px var(--pad) clamp(40px,7vw,84px);max-width:1500px;width:100%}
 .hero .eyebrow{display:flex;align-items:center;gap:12px;color:var(--red-hi);margin-bottom:clamp(18px,2.4vw,30px)}
 .hero .eyebrow::before{content:"";width:36px;height:1px;background:var(--red)}
@@ -319,6 +326,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 <main>
 <section class="hero" id="top">
   <video id="hv" src="/media/hero-loop.mp4" poster="/media/hero-loop.jpg" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+  <div class="ec" aria-hidden="true"><svg><use href="#rbs"/></svg><p class="wm">bMovies<span class="red">X</span></p><p class="tg">Upload your movies. Mint them on Bitcoin.</p></div>
   <div class="spot" aria-hidden="true"></div>
   <header class="nav">
     <a class="brand" href="/" aria-label="bMoviesX home"><svg aria-hidden="true"><use href="#rbs"/></svg><span>bMovies<span class="red">X</span></span></a>
