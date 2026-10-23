@@ -315,6 +315,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 /* sound gate: covers the hero only until the visitor chooses */
 .gate{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.35),rgba(0,0,0,.72) 75%),linear-gradient(180deg,rgba(0,0,0,.35),transparent 40%,transparent 80%,#000);transition:opacity .7s var(--ease)}
 .hero.gated .nav{z-index:21}
+@media (max-width:400px){.nav .btn{padding:0 14px;letter-spacing:.02em}.brand{font-size:26px}}
 .gate.gone{opacity:0;pointer-events:none}
 .gate .gi{display:flex;flex-direction:column;align-items:center;gap:22px;padding:0 16px;text-align:center}
 .gate .gb{display:flex;align-items:center;gap:14px;font:400 clamp(44px,7vw,84px)/1 var(--bebas);letter-spacing:.06em;color:#fff;text-shadow:0 6px 40px rgba(0,0,0,.6)}
