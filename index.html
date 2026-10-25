@@ -334,6 +334,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 @media (prefers-reduced-motion:reduce){.gplay,.gplay::before{animation:none}.gate{transition:none}}
 </style>
 <noscript><style>.gate{display:none}.hero.gated .hero-in,.hero.gated .np,.hero.gated .ec{visibility:visible}</style></noscript>
+<style>@media(max-width:520px){.nav-links .btn[data-bwx-cta]{display:none}}</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -362,6 +363,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
       <a href="#how">How it works</a>
       <a href="#status">Status</a>
       <a class="btn btn-gold" href="https://bwalletx.com/get" data-bwx-cta><span class="bwx-t">Get bWalletX</span></a>
+      <span data-bwx-connect data-fg="#ff3642"></span>
     </nav>
   </header>
   <div class="hero-in">
@@ -542,5 +544,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
   });
 })();
 </script>
+<script src="https://unpkg.com/@bwalletx/connect@0.5.0/dist/bwalletx-connect.global.js" integrity="sha384-1XiN/accJppMI7qXUHzNrUAdUWIotONkjNy7rZBrwcvPxDCFk1yC83JY2c4LZ8gg" crossorigin="anonymous"></script>
+<script src="/bwx-connect.js"></script>
 </body>
 </html>

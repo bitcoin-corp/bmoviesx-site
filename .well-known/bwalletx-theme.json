@@ -1,0 +1,11 @@
+{
+  "v": 2,
+  "name": "bMoviesX",
+  "mode": "dark",
+  "accent": "#E50914",
+  "accentHi": "#FF3642",
+  "bg": "#000000",
+  "surface": "#0A0A0A",
+  "text": "#E5E5E5",
+  "logo": "/logo.svg"
+}
