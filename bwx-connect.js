@@ -17,7 +17,7 @@
   .bwxc:hover{border-color:var(--bwxc-fg,#ffd24d)}.bwxc:focus-visible{outline:2px solid var(--bwxc-fg,#ffd24d);outline-offset:2px}
   .bwxc.on{background:var(--bwxc-fg,#ffd24d);color:var(--bwxc-on,#000);border-color:transparent}
   .bwxc i{width:8px;height:8px;border-radius:50%;background:currentColor;display:block;flex:none}
-  .bwxc{max-width:min(46vw,260px);overflow:hidden;text-overflow:ellipsis}@media(max-width:520px){.bwxc{padding:0 12px}.bwxc .w{display:none}}`;
+  .bwxc{max-width:min(46vw,260px);overflow:hidden;text-overflow:ellipsis}@media(max-width:520px){.bwxc{padding:0 12px}}`;
   document.head.appendChild(css);
   // Brand colour for the button: <span data-bwx-connect data-fg="#5ab8ff" data-on="#000"></span> (default gold).
   slots.forEach((s) => { if (s.dataset.fg) s.style.setProperty('--bwxc-fg', s.dataset.fg); if (s.dataset.on) s.style.setProperty('--bwxc-on', s.dataset.on); if (s.dataset.fg) s.style.setProperty('--bwxc-edge', s.dataset.fg + '73'); });
@@ -40,7 +40,7 @@
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'bwxc' + (key ? ' on' : '');
-    b.innerHTML = key ? `<i></i>${esc(handle || short(key))}` : busy ? 'Connecting…' : 'Connect<span class="w"> bWalletX</span>';
+    b.innerHTML = key ? `<i></i>${esc(handle || short(key))}` : busy ? 'Connecting…' : 'Connect bWalletX';
     b.title = key ? 'Connected to bWalletX. Click to disconnect.' : 'Connect your bWalletX';
     b.disabled = busy;
     b.onclick = key ? disconnect : () => connect(true);
@@ -51,7 +51,7 @@
     try {
       const r = await fetch(`https://pay.bwallet.space/api/paymail/lookup?key=${encodeURIComponent(k)}`);
       const j = r.ok ? await r.json() : null;
-      if (j && typeof j.paymail === 'string' && key === k) { handle = '$' + j.paymail.split('@')[0]; draw(); }
+      if (j && typeof j.paymail === 'string' && key === k) { handle = j.paymail; draw(); } // full paymail, like bVideoX / bMusicX
     } catch {}
   };
 
