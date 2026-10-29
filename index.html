@@ -332,6 +332,35 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 @keyframes gpulse{0%,100%{box-shadow:0 18px 60px rgba(229,9,20,.4),inset 0 2px 0 rgba(255,255,255,.35)}50%{box-shadow:0 18px 90px rgba(229,9,20,.8),inset 0 2px 0 rgba(255,255,255,.35)}}
 @keyframes gring{from{transform:scale(.92);opacity:.9}to{transform:scale(1.35);opacity:0}}
 @media (prefers-reduced-motion:reduce){.gplay,.gplay::before{animation:none}.gate{transition:none}}
+
+/* homepage consistency: short hero (~60vh) + coverflow directly below (matches bVideoX / bMusicX) */
+.hero{min-height:max(460px,calc(60svh - 36px))}
+.hero-in{padding:104px var(--pad) 40px}
+.hero h1{font-size:clamp(46px,5.6vw,92px)}
+.hero .lede{display:none}
+.hero .eyebrow{margin-bottom:14px}
+.ctas{margin-top:22px}
+.hint{margin-top:12px}
+@media (min-width:821px){.np{bottom:40px}}
+@media (max-width:820px){.hero{min-height:max(520px,calc(60svh - 36px))}.hero-in{padding-top:88px}.np{top:76px;bottom:auto}}
+.cfs{padding:28px 0 36px;text-align:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.cfs .kick{margin:0 0 6px}
+.cf{position:relative;height:clamp(300px,34vw,440px);margin:10px auto 0;max-width:1500px;overflow:hidden;perspective:1400px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.cf-card{position:absolute;left:50%;top:50%;height:94%;aspect-ratio:2/3;margin:0;border-radius:6px;overflow:hidden;background:#111;box-shadow:0 30px 60px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);transition:transform .5s var(--ease),opacity .5s,filter .5s;cursor:pointer}
+.cf-card img{width:100%;height:100%;object-fit:cover}
+.cf-card.on{box-shadow:0 30px 70px -10px rgba(255,31,45,.45),0 0 0 1px rgba(255,107,116,.6);cursor:default}
+.cf-card .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 12px;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);text-align:left;opacity:0;transition:opacity .3s}
+.cf-card.on .cap{opacity:1}
+.cf-card .cap b{display:block;font-weight:800;font-size:15px;line-height:1.25;color:#fff}
+.cf-card .cap a{display:inline-block;margin-top:8px;font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red-hi);text-decoration:none;padding:8px 0}
+.cf-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.cf-nav .arrow{width:46px;height:46px;border-radius:50%;border:1px solid #333;background:#0a0a0a;color:#fff;font:700 18px var(--disp);cursor:pointer}
+.cf-nav .arrow:hover{border-color:var(--red-hi)}
+.cf-nav .dots{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:60vw}
+.cf-nav .dots button{width:22px;height:22px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.cf-nav .dots button::after{content:"";width:7px;height:7px;border-radius:50%;background:#3a3a3a}
+.cf-nav .dots button[aria-current=true]::after{background:var(--red);width:9px;height:9px}
+@media (prefers-reduced-motion:reduce){.cf-card{transition:none}}
 </style>
 <noscript><style>.gate{display:none}.hero.gated .hero-in,.hero.gated .np,.hero.gated .ec{visibility:visible}</style></noscript>
 <style>@media(max-width:520px){.nav-links .btn[data-bwx-cta]{display:none}}</style>
@@ -379,6 +408,16 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
     <p class="np-t"><span class="mono">On screen</span><b>Films made on bMovies</b></p>
     <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="ic" aria-hidden="true">&#9834;</span><span class="tx">Sound on</span></button>
     <button class="pp" id="pp" type="button" aria-pressed="false" aria-label="Pause background video"><svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M2 1h3.4v12H2zM8.6 1H12v12H8.6z"/></svg><svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M2.5 1.2v11.6a.5.5 0 0 0 .77.42l9-5.8a.5.5 0 0 0 0-.84l-9-5.8a.5.5 0 0 0-.77.42z"/></svg></button>
+  </div>
+</section>
+
+<section class="cfs" aria-labelledby="cf-top-h">
+  <p class="kick mono" id="cf-top-h">House originals &middot; swipe</p>
+  <div class="cf" id="cf" tabindex="0" role="region" aria-roledescription="carousel" aria-label="House original films"></div>
+  <div class="cf-nav">
+    <button class="arrow" id="cfPrev" type="button" aria-label="Previous film">&larr;</button>
+    <div class="dots" id="cfDots" role="group" aria-label="Choose a film"></div>
+    <button class="arrow" id="cfNext" type="button" aria-label="Next film">&rarr;</button>
   </div>
 </section>
 
@@ -541,6 +580,42 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
     b.forEach(function(x){x.addEventListener('click',function(){r.scrollBy({left:x.dataset.dir*r.clientWidth*.8,behavior:rm?'auto':'smooth'})})});
     r.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
   });
+})();
+</script>
+<script>
+(function(){
+  // Coverflow built from the House originals rail (same behaviour as bVideoX / bMusicX)
+  var src=document.querySelector('#films .rail');if(!src)return;
+  var items=[].slice.call(src.querySelectorAll('a.card')).slice(0,16).map(function(a){var i=a.querySelector('img');return{h:a.href,img:i.getAttribute('src'),t:a.querySelector('b').textContent}});
+  var cf=document.getElementById('cf'),dots=document.getElementById('cfDots'),cur=0,dragged=false;
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  cf.innerHTML=items.map(function(v,i){return '<figure class="cf-card" data-i="'+i+'"><img src="'+esc(v.img)+'" alt="'+esc(v.t)+' poster" loading="'+(i<4||i>items.length-3?'eager':'lazy')+'" decoding="async" draggable="false"><figcaption class="cap"><b>'+esc(v.t)+'</b><a href="'+esc(v.h)+'">Watch on bMovies.app &rarr;</a></figcaption></figure>'}).join('');
+  dots.innerHTML=items.map(function(v){return '<button type="button" aria-label="'+esc(v.t)+'"></button>'}).join('');
+  var cards=[].slice.call(cf.children);
+  function layout(){var n=cards.length,w=cards[0].offsetWidth;cards.forEach(function(c,i){var d=i-cur;if(d>n/2)d-=n;if(d<-n/2)d+=n;var a=Math.abs(d);
+    c.style.transform='translate(-50%,-50%) translateX('+(d*w*.62)+'px) translateZ('+(-a*160)+'px) rotateY('+(-Math.sign(d)*Math.min(a,1)*38)+'deg)';
+    c.style.opacity=a>3?0:1-a*.2;c.style.zIndex=100-a;c.style.filter=a?'brightness(.5)':'none';c.style.pointerEvents=a>3?'none':'auto';
+    c.classList.toggle('on',a===0);c.setAttribute('aria-hidden',a===0?'false':'true');
+    var l=c.querySelector('a');if(a===0)l.removeAttribute('tabindex');else l.setAttribute('tabindex','-1')});
+    [].forEach.call(dots.children,function(b,i){b.setAttribute('aria-current',i===cur?'true':'false')})}
+  function go(i){cur=(i+cards.length)%cards.length;layout()}
+  document.getElementById('cfPrev').onclick=function(){go(cur-1)};document.getElementById('cfNext').onclick=function(){go(cur+1)};
+  [].forEach.call(dots.children,function(b,i){b.onclick=function(){go(i)}});
+  cf.addEventListener('click',function(e){if(dragged){dragged=false;e.preventDefault();return}var c=e.target.closest('.cf-card');if(c&&+c.dataset.i!==cur){e.preventDefault();go(+c.dataset.i)}});
+  cf.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')go(cur-1);if(e.key==='ArrowRight')go(cur+1)});
+  // Trackpad / Magic Mouse: horizontal wheel steps one card per gesture; vertical scroll untouched
+  var acc=0,steps=0,idle=0;
+  cf.addEventListener('wheel',function(e){var k=e.deltaMode===1?16:e.deltaMode===2?400:1,dx=e.deltaX*k,dy=e.deltaY*k;if(e.shiftKey&&!dx){dx=dy;dy=0}
+    if(Math.abs(dx)<=Math.abs(dy)||Math.abs(dx)<2)return;e.preventDefault();clearTimeout(idle);idle=setTimeout(function(){acc=0;steps=0},200);acc+=dx;
+    if(steps===0&&Math.abs(acc)>=50){go(cur+Math.sign(acc));steps=1;acc=0}else if(steps===1&&Math.abs(acc)>=600){go(cur+Math.sign(acc));steps=2}},{passive:false});
+  // drag / touch swipe
+  var sx=null,sy=0;
+  cf.addEventListener('pointerdown',function(e){sx=e.clientX;sy=e.clientY;dragged=false});
+  cf.addEventListener('pointermove',function(e){if(sx!=null&&Math.abs(e.clientX-sx)>8&&Math.abs(e.clientX-sx)>Math.abs(e.clientY-sy))dragged=true});
+  cf.addEventListener('pointerup',function(e){if(sx==null)return;var dx=e.clientX-sx;if(dragged&&Math.abs(dx)>40)go(cur+(dx<0?1:-1));sx=null});
+  cf.addEventListener('pointercancel',function(){sx=null});
+  cf.addEventListener('dragstart',function(e){e.preventDefault()});
+  addEventListener('resize',layout);layout();
 })();
 </script>
 <script src="https://unpkg.com/@bwalletx/connect@0.5.0/dist/bwalletx-connect.global.js" integrity="sha384-1XiN/accJppMI7qXUHzNrUAdUWIotONkjNy7rZBrwcvPxDCFk1yC83JY2c4LZ8gg" crossorigin="anonymous"></script>
