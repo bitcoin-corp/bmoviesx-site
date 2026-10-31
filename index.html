@@ -343,6 +343,7 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 .cf-nav .dots button::after{content:"";width:7px;height:7px;border-radius:50%;background:#3a3a3a}
 .cf-nav .dots button[aria-current=true]::after{background:var(--red);width:9px;height:9px}
 @media (prefers-reduced-motion:reduce){.cf-card{transition:none}}
+
 </style>
 <style>
 :root{--xs-acc:#FF1F2D}
@@ -410,6 +411,12 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 .ofr-go{margin:auto 12px 12px;display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:999px;background:linear-gradient(180deg,#ffe58a,#ffd24d 55%,#c98f00);color:#000;font:600 14px/1 'Space Grotesk',system-ui,sans-serif;text-decoration:none}
 .ofr-go:hover{filter:brightness(1.06)}
 @media (prefers-reduced-motion:reduce){.ofr-rail{scroll-behavior:auto}}
+/* Wordmark option 2 (owner 31 Oct 2026): gold b logo, name in the product colour, white X; title and top bar */
+.xs-brand svg{color:#F5B800}
+.xs-brand .xs-nm,.xs-h1 .xs-nm{font-style:normal;color:var(--xs-acc)}
+.xs-brand i,.xs-h1 .xs-x{color:#fff}
+.xs-h1 .xs-hb{display:inline-block;height:.95em;width:auto;vertical-align:-.03em;margin-right:.04em;color:#F5B800}
+.xs-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -424,8 +431,8 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 <main>
 <section class="xs-top" id="top" aria-labelledby="xs-h1">
   <video id="hv" src="/media/hero-loop.mp4" poster="/media/hero-loop.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
-  <header class="xs-wrap xs-nav"><a class="xs-brand" href="/" aria-label="bMoviesX home"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-bm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-bm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span>bMovies<i>X</i></span></a><nav class="xs-links" aria-label="Main"><a href="#films">Browse</a><a class="xs-hs" href="#status">Status</a><a class="xs-hs" href="#how">For creators</a><span data-bwx-connect></span></nav></header>
-  <div class="xs-wrap xs-in"><h1 class="xs-h1" id="xs-h1"><i>b</i>Movies<span class="xs-x">X</span></h1><p class="xs-lede">House originals and parodies from the bMovies studios, free to watch.</p><div class="xs-ctas"><a class="xs-btn xs-ghost" href="#films">Browse</a><a class="xs-btn xs-gold" href="https://bwalletx.com/get">Get bWalletX</a></div></div>
+  <header class="xs-wrap xs-nav"><a class="xs-brand" href="/" aria-label="bMoviesX home"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-bm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-bm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span><span class="xs-sr">b</span><span class="xs-nm">Movies</span><i>X</i></span></a><nav class="xs-links" aria-label="Main"><a href="#films">Browse</a><a class="xs-hs" href="#status">Status</a><a class="xs-hs" href="#how">For creators</a><span data-bwx-connect></span></nav></header>
+  <div class="xs-wrap xs-in"><h1 class="xs-h1" id="xs-h1"><svg class="xs-hb" viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-hbm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-hbm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span class="xs-sr">b</span><span class="xs-nm">Movies</span><span class="xs-x">X</span></h1><p class="xs-lede">House originals and parodies from the bMovies studios, free to watch.</p><div class="xs-ctas"><a class="xs-btn xs-ghost" href="#films">Browse</a><a class="xs-btn xs-gold" href="https://bwalletx.com/get">Get bWalletX</a></div></div>
   <button class="xs-snd" id="xs-snd" type="button" aria-pressed="false">&#9834; Sound on</button>
 </section>
 
