@@ -418,6 +418,16 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 .xs-h1 .xs-hb{display:inline-block;height:.95em;width:auto;vertical-align:-.03em;margin-right:.04em;color:#F5B800}
 .xs-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
+<style>
+.xs-top{position:relative;isolation:isolate}
+.xs-h1{font-family:'Space Grotesk',system-ui,sans-serif!important;font-weight:800!important;letter-spacing:-.02em}
+.xs-h1 .xs-hb{color:#F5B800}
+.rx-g{background:linear-gradient(90deg,#b91c1c,#FF1F2D 45%,#fecaca);-webkit-background-clip:text;background-clip:text;color:transparent!important;filter:drop-shadow(0 3px 0 #000)}
+.rx-ghost{position:absolute;right:-20px;bottom:-50px;font:800 clamp(140px,22vw,300px)/1 'Space Grotesk',sans-serif;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px rgba(255,31,45,.3);z-index:1;pointer-events:none;white-space:nowrap}
+.rx-lb{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(#000 0 7%,transparent 7% 93%,#000 93%),radial-gradient(ellipse at 85% 40%,rgba(255,255,255,.1),transparent 40%)}
+.xs-top .xs-in,.xs-top .xs-nav{position:relative;z-index:2}.xs-snd{z-index:3}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -432,8 +442,8 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 <section class="xs-top" id="top" aria-labelledby="xs-h1">
   <video id="hv" src="/media/hero-loop.mp4" poster="/media/hero-loop.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
   <header class="xs-wrap xs-nav"><a class="xs-brand" href="/" aria-label="bMoviesX home"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-bm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-bm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span><span class="xs-sr">b</span><span class="xs-nm">Movies</span><i>X</i></span></a><nav class="xs-links" aria-label="Main"><a href="#films">Browse</a><a class="xs-hs" href="#status">Status</a><a class="xs-hs" href="#how">For creators</a><span data-bwx-connect></span></nav></header>
-  <div class="xs-wrap xs-in"><h1 class="xs-h1" id="xs-h1"><svg class="xs-hb" viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-hbm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-hbm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span class="xs-sr">b</span><span class="xs-nm">Movies</span><span class="xs-x">X</span></h1><p class="xs-lede">House originals and parodies from the bMovies studios, free to watch.</p><div class="xs-ctas"><a class="xs-btn xs-ghost" href="#films">Browse</a><a class="xs-btn xs-gold" href="https://bwalletx.com/get">Get bWalletX</a></div></div>
-  <button class="xs-snd" id="xs-snd" type="button" aria-pressed="false">&#9834; Sound on</button>
+  <div class="xs-wrap xs-in"><h1 class="xs-h1" id="xs-h1"><svg class="xs-hb" viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-hbm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-hbm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span class="xs-sr">b</span><span class="xs-nm rx-g">MoviesX</span></h1><p class="xs-lede">House originals and parodies from the bMovies studios, free to watch.</p><div class="xs-ctas"><a class="xs-btn xs-ghost" href="#films">Browse</a><a class="xs-btn xs-gold" href="https://bwalletx.com/get">Get bWalletX</a></div></div>
+  <div class="rx-ghost" aria-hidden="true">MOVIESX</div><div class="rx-lb" aria-hidden="true"></div><button class="xs-snd" id="xs-snd" type="button" aria-pressed="false">&#9834; Sound on</button>
 </section>
 
 <section class="cfs xs-cfs" aria-labelledby="cf-top-h">
