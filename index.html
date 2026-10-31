@@ -426,23 +426,24 @@ footer{padding:36px var(--pad) calc(40px + env(safe-area-inset-bottom));border-t
 .rx-ghost{position:absolute;right:-20px;bottom:-50px;font:800 clamp(140px,22vw,300px)/1 'Space Grotesk',sans-serif;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px rgba(255,31,45,.3);z-index:1;pointer-events:none;white-space:nowrap}
 .rx-lb{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(#000 0 7%,transparent 7% 93%,#000 93%),radial-gradient(ellipse at 85% 40%,rgba(255,255,255,.1),transparent 40%)}
 .xs-top .xs-in,.xs-top .xs-nav{position:relative;z-index:2}.xs-snd{z-index:3}
+@media(max-width:700px){.rx-ghost,.rx-tx,.rx-lb,.rx-eq{display:none!important}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <linearGradient id="rb" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="0" y2="105"><stop offset="0" stop-color="#FF6B74"/><stop offset=".55" stop-color="#FF1F2D"/><stop offset="1" stop-color="#B0000E"/></linearGradient>
-  <mask id="rbm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask>
-  <symbol id="rbs" viewBox="23 8 74 100"><g fill="url(#rb)" mask="url(#rbm)"><polygon points="45,12 45,76 27,76 27,30"/><circle cx="60" cy="72" r="33"/></g></symbol>
+  
+  <symbol id="rbs" viewBox="23 8 74 100"><path fill="url(#rb)" d="M45 12V72H27V30Z M27 72a33 33 0 1 1 66 0a33 33 0 1 1-66 0Z M45 72a15 15 0 1 0 30 0a15 15 0 1 0-30 0Z"/></symbol>
 </defs></svg>
 
-<aside class="xs-strip" aria-label="bWalletX"><a href="https://bwalletx.com"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><defs><linearGradient id="xs-sg" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="0" y2="105"><stop offset="0" stop-color="#FFE58A"/><stop offset=".55" stop-color="#FFD24D"/><stop offset="1" stop-color="#C98F00"/></linearGradient><mask id="xs-sm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask></defs><g fill="url(#xs-sg)" mask="url(#xs-sm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span>Part of <b>bWalletX</b></span><span class="xs-go" aria-hidden="true">&rarr;</span></a></aside>
+<aside class="xs-strip" aria-label="bWalletX"><a href="https://bwalletx.com"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><defs><linearGradient id="xs-sg" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="0" y2="105"><stop offset="0" stop-color="#FFE58A"/><stop offset=".55" stop-color="#FFD24D"/><stop offset="1" stop-color="#C98F00"/></linearGradient></defs><path fill="url(#xs-sg)" d="M45 12V72H27V30Z M27 72a33 33 0 1 1 66 0a33 33 0 1 1-66 0Z M45 72a15 15 0 1 0 30 0a15 15 0 1 0-30 0Z"/></svg><span>Part of <b>bWalletX</b></span><span class="xs-go" aria-hidden="true">&rarr;</span></a></aside>
 
 <main>
 <section class="xs-top" id="top" aria-labelledby="xs-h1">
   <video id="hv" src="/media/hero-loop.mp4" poster="/media/hero-loop.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
-  <header class="xs-wrap xs-nav"><a class="xs-brand" href="/" aria-label="bMoviesX home"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-bm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-bm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span><span class="xs-sr">b</span><span class="xs-nm">Movies</span><i>X</i></span></a><nav class="xs-links" aria-label="Main"><a href="#films">Browse</a><a class="xs-hs" href="#status">Status</a><a class="xs-hs" href="#how">For creators</a><span data-bwx-connect></span></nav></header>
-  <div class="xs-wrap xs-in"><h1 class="xs-h1" id="xs-h1"><svg class="xs-hb" viewBox="23 8 74 100" aria-hidden="true" focusable="false"><mask id="xs-hbm"><rect width="140" height="140" fill="#fff"/><circle cx="60" cy="72" r="15" fill="#000"/></mask><g fill="currentColor" mask="url(#xs-hbm)"><polygon points="45,12 45,72 27,72 27,30"/><circle cx="60" cy="72" r="33"/></g></svg><span class="xs-sr">b</span><span class="xs-nm rx-g">MoviesX</span></h1><p class="xs-lede">House originals and parodies from the bMovies studios, free to watch.</p><div class="xs-ctas"><a class="xs-btn xs-ghost" href="#films">Browse</a><a class="xs-btn xs-gold" href="https://bwalletx.com/get">Get bWalletX</a></div></div>
+  <header class="xs-wrap xs-nav"><a class="xs-brand" href="/" aria-label="bMoviesX home"><svg viewBox="23 8 74 100" aria-hidden="true" focusable="false"><path fill="currentColor" d="M45 12V72H27V30Z M27 72a33 33 0 1 1 66 0a33 33 0 1 1-66 0Z M45 72a15 15 0 1 0 30 0a15 15 0 1 0-30 0Z"/></svg><span><span class="xs-sr">b</span><span class="xs-nm">Movies</span><i>X</i></span></a><nav class="xs-links" aria-label="Main"><a href="#films">Browse</a><a class="xs-hs" href="#status">Status</a><a class="xs-hs" href="#how">For creators</a><span data-bwx-connect></span></nav></header>
+  <div class="xs-wrap xs-in"><h1 class="xs-h1" id="xs-h1"><svg class="xs-hb" viewBox="23 8 74 100" aria-hidden="true" focusable="false"><path fill="currentColor" d="M45 12V72H27V30Z M27 72a33 33 0 1 1 66 0a33 33 0 1 1-66 0Z M45 72a15 15 0 1 0 30 0a15 15 0 1 0-30 0Z"/></svg><span class="xs-sr">b</span><span class="xs-nm rx-g">MoviesX</span></h1><p class="xs-lede">House originals and parodies from the bMovies studios, free to watch.</p><div class="xs-ctas"><a class="xs-btn xs-ghost" href="#films">Browse</a><a class="xs-btn xs-gold" href="https://bwalletx.com/get">Get bWalletX</a></div></div>
   <div class="rx-ghost" aria-hidden="true">MOVIESX</div><div class="rx-lb" aria-hidden="true"></div><button class="xs-snd" id="xs-snd" type="button" aria-pressed="false">&#9834; Sound on</button>
 </section>
 
